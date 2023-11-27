@@ -14,9 +14,9 @@ class WordFinder:
 
 
     def __repr__(self):
-        return (
-        f"<WordFinder filepath={self.filepath} wordlist = {self.wordlist}>"
-        )
+        repr_string = f"<{self.__class__.__name__} filepath={self.filepath} "
+        repr_string += f"wordlist = {self.wordlist}>"
+        return repr_string
 
     def __readfile__(self):
         """Reads file and returns a wordlist of all words in file."""
@@ -38,3 +38,21 @@ class WordFinder:
         return choice(self.wordlist)
 
 
+class SpecialWordFinder(WordFinder):
+    """SpecialWordFinder: finds random words from a text file, ignoring
+        blanks and comments (that start with #)"""
+
+    def __init__(self, filepath):
+        """creates SpecialWordFinder object from a given filepath for a text
+            file and prints how many non-blank, non-comment words it read"""
+
+        super().__init__(filepath)
+
+    def __readfile__(self):
+        """Reads file and returns a wordlist of all words in file except blank
+            lines and lines that begin with #."""
+
+        wordlist = super().__readfile__()
+        trimmed_wordlist = [word for word in wordlist
+                            if len(word) > 0 and not word.startswith('#')]
+        return trimmed_wordlist
