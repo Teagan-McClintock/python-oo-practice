@@ -20,16 +20,24 @@ class SerialGenerator:
 
     def __init__(self, start):
         """create a new instance of a SerialGenerator object"""
+
         self.start = start
         self.times_run = 0
+
+    def __repr__(self):
+        return (
+        f"<SerialGenerator(start = {self.start},times_run = {self.times_run})>"
+        )
 
     def generate(self):
         """generates serial number based on # of times run, then increments
             times run an returns the serial number that was generated"""
+
         serial_number = self.start + self.times_run
         self.times_run += 1
         return serial_number
 
     def reset(self):
         """resets times run to 0"""
+
         self.times_run = 0
