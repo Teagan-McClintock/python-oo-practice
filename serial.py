@@ -26,7 +26,7 @@ class SerialGenerator:
 
     def __repr__(self):
         return (
-        f"<SerialGenerator(start = {self.start},times_run = {self.times_run})>"
+        f"<SerialGenerator(start = {self.start}, times_run = {self.times_run})>"
         )
 
     def generate(self):

@@ -40,7 +40,17 @@ class WordFinder:
 
 class SpecialWordFinder(WordFinder):
     """SpecialWordFinder: finds random words from a text file, ignoring
-        blanks and comments (that start with #)"""
+        blanks and comments (that start with #)
+
+    >>> specwf = SpecialWordFinder("dogs.txt")
+    4 words read
+
+    >>> len(specwf.wordlist)
+    4
+
+    >>> specwf.random() in specwf.wordlist
+    True
+    """
 
     def get_wordlist(self):
         """Reads file and returns a wordlist of all words in file except blank
